@@ -1,0 +1,44 @@
+Scenario: 🅿️ "Smart Parking Lot System"
+
+Step 1: Exception Handling (Custom)
+Ek class bana InvalidPlateException jo Exception (Checked) ko extend kare.
+Constructor mein message pass karwana.
+
+Step 2: Abstraction & Static (The Core)
+Ek abstract class Vehicle bana.
+Fields: String licensePlate (protected rakh taaki bache access kar sakein),
+static double totalRevenue = 0.
+Constructor: licensePlate set kare.
+Validation: Agar licensePlate null ya empty ("") hai, toh throw new InvalidPlateException.
+Abstract Method: double calculateFee().
+
+Step 3: Polymorphism (Real Vehicles)
+Class Car extends Vehicle:
+Fee: 50 rupees.
+calculateFee() override kar aur return 50.
+IMP: super(plate) use karna mat bhoolna.
+Class Bike extends Vehicle:
+Fee: 20 rupees.
+calculateFee() override kar aur return 20.
+
+
+Step 4: Generics (The Parking Slot)
+Ek class bana ParkingSlot<T extends Vehicle>.
+Method park(T v):
+Print: "Vehicle [Plate] Parked."
+Vehicle.totalRevenue mein is gadi ki fee add kar. (Yahan Polymorphism dikhega v.calculateFee() se).
+
+
+Step 5: Main Execution
+try-catch block ke andar:
+Ek Car bana ("UP-16-5555").
+Ek Bike bana ("DL-90-1234").
+Ek Car bana bina number plate ke "" (Exception test karne ke liye).
+ParkingSlot objects bana aur gadiyan park kar.
+Last mein print kar: "Total Revenue: [Amount]".
+
+
+Checklist for Logic:
+Kya tune Car mein licensePlate dobara declare kiya? (Agar haan, toh Shadowing galti hai! ❌).
+Kya tune totalRevenue ko static banaya?
+Kya park() method generic hai?

@@ -1,0 +1,47 @@
+🛠️ The Challenge: Mini E-Commerce System
+Tujhe niche diye gaye 5 steps follow karke code likhna hai. Darna mat, step-by-step tod ke diya hai.
+
+Step 1: Interface & Abstraction (Rules)
+
+Ek Interface bana Taxable.
+Isme ek final variable ho: double TAX_RATE = 0.18; (18% GST).
+Ek abstract method ho: calculateTax().
+Ek Abstract Class bana Product jo Taxable ko implement kare.
+Isme private fields hon: String name, double price.
+Ek static variable ho totalProducts (Jo count kare kitne product bane).
+Encapsulation: Private fields ke liye Getter/Setter bana.
+Constructor: Name aur Price set karne ke liye. (Constructor mein totalProducts++ karna mat bhoolna).
+
+
+Step 2: Validations & Exceptions (Safety)
+Product class ke Setter (setPrice) mein validation laga:
+Agar price < 0 hai, toh throw new IllegalArgumentException("Price negative nahi ho sakti!").
+Ise try-catch se Main class mein handle karna padega.
+
+
+Step 3: Inheritance & Polymorphism (Real Products)
+Do Child classes bana: Electronics aur Clothing jo Product ko extend karein.
+Polymorphism: calculateTax() method ko override kar.
+Electronics pe tax: price * TAX_RATE.
+Clothing pe tax: price * 0.05 (Kapdo pe 5% tax hai, interface wala 18% ignore kar - Overriding).
+
+
+Step 4: Generics (The Box)
+Ek Generic class bana Order<T>.
+Ye sirf Product ya uske bacho ko accept kare (Agar simple rakhna hai to <T> rakh).
+Isme ek method ho placeOrder(T item) jo print kare: "Ordering [Item Name] with Price:
+ [Total Price with Tax]".
+
+Step 5: Main Class (Execution)
+main method mein:
+Ek Electronics object bana (Laptop, 50000).
+Ek Clothing object bana (T-Shirt, 1000).
+Ek Product bana jisme galti se Negative Price (-500) daal ke dekh (Try-Catch check karne ke liye).
+Generic Order class use karke Laptop aur T-Shirt ka order place kar.
+Last mein static variable print kar ki Total Products kitne create hue.
+
+💡 Hints (Agar atak jaye)
+Interface: interface Taxable { ... }
+Abstract: abstract class Product implements Taxable { ... }
+Exception: throw new RuntimeException("Msg")
+Static Access: Product.totalProducts
